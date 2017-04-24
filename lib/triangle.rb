@@ -1,8 +1,23 @@
 class Triangle
+  @@triangles = []
+
   def initialize(side1, side2, side3)
     @side1 = side1
     @side2 = side2
     @side3 = side3
+    @@triangles.push(self)
+  end
+
+  def side1
+    @side1
+  end
+  
+  def Triangle.all
+    @@triangles
+  end
+
+  def Triangle.clear
+    @@triangles = []
   end
 
   def triangle_type
@@ -18,7 +33,7 @@ class Triangle
       else
         "Not a triangle"
       end
-      
+
     elsif (@side1 != @side2 && @side1 + @side2 > @side3 ) || (@side2 != @side3 && @side2 + @side3 > @side1 ) || (@side1 != @side3 && @side1 + @side3 > @side2)
       "Scalene"
     end

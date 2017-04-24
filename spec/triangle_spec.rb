@@ -2,6 +2,10 @@ require 'rspec'
 require 'triangle'
 
 describe(Triangle) do
+  before() do
+    Triangle.clear()
+  end
+
   describe("#triangle_type") do
     it("returns 'Equilateral' if the triangle is Equilateral") do
       new_triangle = Triangle.new(2,2,2)
@@ -26,6 +30,12 @@ describe(Triangle) do
     it("checks if the method is called on numbers") do
       new_triangle = Triangle.new("apple", "burrito", "Niklas")
       expect(new_triangle.triangle_type).to(eq("That is NOT valid input. Please use positive numbers only"))
+    end
+
+    it("adds a triangle to an array of triangles") do
+      Triangle.new(2,5,5)
+      Triangle.new(2,2,3)
+      expect(Triangle.all.length).to(eq(2))
     end
   end
 end

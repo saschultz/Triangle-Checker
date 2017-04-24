@@ -1,4 +1,4 @@
-<form action="/triangle">
+<form action="/triangles" method="post">
   <div class="form-group">
     <label for="triangle">Enter side lengths of a triangle to see what type it is:</label>
     <input type="number" name="side1">
@@ -9,4 +9,16 @@
 </form>
 <div class="output">
   <%= @result %>
+
+  <h1>Here are all the triangles:</h1>
+  <form action="/clear" method="post">
+    <button>Clear</button>
+  </form>
+
+  <ul>
+    <% @triangles.each() do |triangle| %>
+      <li><%= triangle.triangle_type %></li>
+    <% end %>
+  </ul>
+
 </div>
